@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,6 +97,19 @@
     </style>
     <script>
         const messagesPerPage = 25;
+
+        function filterMessages() {
+            const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+            const messages = document.querySelectorAll('.message');
+
+            messages.forEach(message => {
+                if (message.innerText.toLowerCase().includes(searchTerm)) {
+                    message.style.display = 'block';
+                } else {
+                    message.style.display = 'none';
+                }
+            });
+        }
         let currentPage = 1;
 
         function showPage(page) {
@@ -150,7 +162,7 @@
         Streameast Pasta 🍝
     </h1>
     <div id="search-container">
-        <input id="search-bar" type="text" placeholder="Search for a message...">
+        <input id="search-bar" type="text" placeholder="Search for a message..." oninput="filterMessages()">
     </div>
     <p style="display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center;">
         <img src="https://cdn.betterttv.net/emote/62c975dfd991a3e26c122786/1x" alt="Decoration" style="width: 24px; height: 24px;">
